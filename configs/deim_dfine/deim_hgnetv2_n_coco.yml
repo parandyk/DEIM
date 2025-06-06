@@ -33,7 +33,7 @@ lr_gamma: 1.0
 
 ## Our DataAug
 train_dataloader: 
-  total_batch_size: 64
+  total_batch_size: 48
   dataset: 
     transforms:
       policy:
