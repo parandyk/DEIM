@@ -1,5 +1,20 @@
-GPUS=$1
+mode=$1
 model=$2
-cd $3
+chkpt=$3
+GPUS=$4
+dir=$5
+
+cd $dir
+
 #CUDA_VISIBLE_DEVICES=0 
-torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0
+
+if [ "$mode" == train ]
+then
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0
+elif [ "$mode" == tune ]
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0 -r $chkpt
+elif [ "$mode" == test ]
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0 -t $chkpt
+fi
+
+
