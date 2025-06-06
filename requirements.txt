@@ -1,5 +1,5 @@
 torch>=2.0.1
-torchvision>=0.15.2
+torchvision>=0.15.2, <=0.20.0
 faster-coco-eval>=1.6.5
 PyYAML
 tensorboard
