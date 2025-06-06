@@ -8,6 +8,7 @@ num_classes: 80
 remap_mscoco_category: True
 
 train_dataloader: 
+  total_batch_size: 64
   type: DataLoader
   dataset: 
     type: CocoDetection
@@ -25,6 +26,7 @@ train_dataloader:
 
 
 val_dataloader:
+  total_batch_size: 8
   type: DataLoader
   dataset: 
     type: CocoDetection
