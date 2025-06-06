@@ -43,3 +43,6 @@ train_dataloader:
     mixup_epochs: [4, 78]
     stop_epoch: 148
     base_size_repeat: ~
+
+val_dataloader:
+  total_batch_size: 64
