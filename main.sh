@@ -10,13 +10,13 @@ cd $dir
 
 if [ "$mode" == train ]
 then
-  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --summary-dir --use-amp --seed=0
 elif [ "$mode" == tune ]
 then
-  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0 -t $chkpt
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --summary-dir --use-amp --seed=0 -t $chkpt
 elif [ "$mode" == test ]
 then
-  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --test-only -r $chkpt
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --summary-dir --test-only -r $chkpt
 fi
 
 
