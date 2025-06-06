@@ -4,10 +4,11 @@ evaluator:
   type: CocoEvaluator
   iou_types: ['bbox', ]
 
-num_classes: 777 # your dataset classes
+num_classes: 4 # your dataset classes
 remap_mscoco_category: False
 
 train_dataloader:
+  total_batch_size: 48
   type: DataLoader
   dataset:
     type: CocoDetection
@@ -20,13 +21,14 @@ train_dataloader:
       type: Compose
       ops: ~
   shuffle: True
-  num_workers: 4
+  num_workers: 8 #4
   drop_last: True
   collate_fn:
     type: BatchImageCollateFunction
 
 
 val_dataloader:
+  total_batch_size: 8
   type: DataLoader
   dataset:
     type: CocoDetection
