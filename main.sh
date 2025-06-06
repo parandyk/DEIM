@@ -16,7 +16,7 @@ then
   torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0 -t $chkpt
 elif [ "$mode" == test ]
 then
-  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --use-amp --seed=0 --test-only -r $chkpt
+  torchrun --master_port=7777 --nproc_per_node=$GPUS train.py -c configs/deim_dfine/deim_hgnetv2_${model}_coco.yml --test-only -r $chkpt
 fi
 
 
