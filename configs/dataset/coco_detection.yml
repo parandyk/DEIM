@@ -21,7 +21,7 @@ train_dataloader:
       type: Compose
       ops: ~
   shuffle: True
-  num_workers: 4
+  num_workers: 8 #4 
   drop_last: True 
   collate_fn:
     type: BatchImageCollateFunction
